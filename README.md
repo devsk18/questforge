@@ -11,3 +11,7 @@ Created project structure
     /tests          # test cases for the codebase
     main.py         # entrypoint
 ```
+
+# Level 1: Classes & Objects
+Added `Character` class with it's attributes and methods. A character can attack, heal and describe itself. It will have a name, health, max_health, attack_power for now.
+
