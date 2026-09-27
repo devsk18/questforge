@@ -1,26 +1,42 @@
 class Character:
     def __init__(self, name: str, health: int, attack_power: int) -> None:
         self.name = name
-        self.health = health
-        self.max_health = health
+        self._health = health
+        self.__max_health = health
         self.attack_power = attack_power
 
+    @property
+    def health(self) -> int:
+        return self._health
+
+    @property
+    def is_alive(self) -> bool:
+        return self.health > 0
+
+    def take_damage(self, damage: int) -> None:
+        if damage < 0:
+            raise ValueError("Damage must be a non-negative integer.")
+        self._health = max(0, self._health - damage)
+
+    def heal(self, amount: int) -> None:
+        if amount < 0:
+            raise ValueError("Heal points must be a non-negative integer.")
+        self._health = min(self.__max_health, self._health + amount)
+        print(f"{self.name} got {amount} heal points! - Health: {self.health}")
+
     def attack(self, target: Character) -> None:
-        target.health -= self.attack_power
+        if not self.is_alive:
+            return
+        
+        target.take_damage(self.attack_power)
         print(f"{self.name} attacks {target.name} for {self.attack_power} damage!")
-        if target.health <= 0:
-            target.health = 0
+        
+        if not target.is_alive:
             print(f"{self.name} killed {target.name}!")
 
-    def heal(self, heal_point: int) -> None:
-        self.health += heal_point
-        if self.health > self.max_health:
-            self.health = self.max_health
-        print(f"{self.name} got {heal_point} heal points! - Health: {self.health}")
-
     def describe(self) -> str:
-        if self.health <= 0:
-            return f"{self.name} is dead."
-        return f"{self.name} has {self.health} HP and {self.attack_power} ATK"
+        if not self.is_alive:
+            return f"{self.name} - DEAD"
+        return f"{self.name} - HP: {self.health} - ATK: {self.attack_power}"
 
             
