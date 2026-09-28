@@ -15,3 +15,8 @@ Created project structure
 # Level 1: Classes & Objects
 Added `Character` class with it's attributes and methods. A character can attack, heal and describe itself. It will have a name, health, max_health, attack_power for now.
 
+# Level 2: Encapsulation
+Added access specifiers, setters and getters to hide the properties from external access and mutations.
+
+# Level 3: Inheritance 
+Concept added to extend the features of Character class to it's subclasses which help us to form new characters without duplicating base code.

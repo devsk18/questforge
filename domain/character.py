@@ -19,6 +19,10 @@ class Character:
         self._health = max(0, self._health - damage)
 
     def heal(self, amount: int) -> None:
+        if not self.is_alive:
+            print(f"{self.name} - DEAD")
+            return
+        
         if amount < 0:
             raise ValueError("Heal points must be a non-negative integer.")
         self._health = min(self.__max_health, self._health + amount)
@@ -34,9 +38,10 @@ class Character:
         if not target.is_alive:
             print(f"{self.name} killed {target.name}!")
 
-    def describe(self) -> str:
+    def describe(self) -> None:
         if not self.is_alive:
-            return f"{self.name} - DEAD"
-        return f"{self.name} - HP: {self.health} - ATK: {self.attack_power}"
+            print(f"{self.name} - DEAD")
+            return
+        print(f"{self.name} - HP: {self.health} - ATK: {self.attack_power}")
 
             
