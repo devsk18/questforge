@@ -20,3 +20,6 @@ Added access specifiers, setters and getters to hide the properties from externa
 
 # Level 3: Inheritance 
 Concept added to extend the features of Character class to it's subclasses which help us to form new characters without duplicating base code.
+
+# Level 4: Polymorphism
+Concept helps us to implement same action in different ways without needing to do a check for the action type. The action behaviour will work based on the underlying object.

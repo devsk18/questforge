@@ -1,8 +1,21 @@
+from domain.battle import run_special_round, total_party_damage
 from domain.character import Character
 from domain.classes import Cleric, Mage, Rogue, Warrior
 
 
 if __name__ == "__main__":
+    party = [Warrior("Bram"), Mage("Sylla"), Rogue("Kade"), Cleric("Healer")]
+    dummy = Warrior("Dummy")
+    
+    for member in party:
+        run_special_round(member, dummy)
+        print(f"Dummy HP: {dummy.health}\n")
+
+    total_party_damage(party, dummy)
+    dummy.describe()
+    
+    
+    """ 
     warrior = Warrior("Bram")
     mage = Mage("Sylla")
     rogue = Rogue("Devil")
@@ -48,4 +61,5 @@ if __name__ == "__main__":
     warrior.describe()
     mage.describe()
     rogue.describe()
-    cleric.describe()
+    cleric.describe() 
+    """

@@ -42,6 +42,4 @@ class Character:
         if not self.is_alive:
             print(f"{self.name} - DEAD")
             return
-        print(f"{self.name} - HP: {self.health} - ATK: {self.attack_power}")
-
-            
+        print(f"{self.name} - HP: {self.health} - ATK: {self.attack_power}")       
